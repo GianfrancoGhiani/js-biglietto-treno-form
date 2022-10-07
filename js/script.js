@@ -26,7 +26,7 @@ const pickValues = function (){
     if (isNaN(dist) || isNaN(age)){
         alert('Si prega di scrivere i dati in cifre senza utilizzare lettere, di mettere la virgola con il simbolo " . " e ricaricare la pagina');
     }
-    console.log(dist, age);
+    // console.log(dist, age);
 
     let fraseTicket = '';
     const prezzoPieno = parseFloat(dist) * 0.21
@@ -38,10 +38,12 @@ const pickValues = function (){
         prezzoFinale = (prezzoPieno * 0.6).toFixed(2);
         fraseTicket = 'Dato che sei un over 65, puoi accedere ad uno sconto del 40%';
     }
-    console.log(prezzoFinale)
+    // console.log(prezzoFinale);
     document.getElementById("ticket").innerHTML =`
-    <h1 class="text-center w-50 m-auto">La tua tratta percorre ${dist}km</h1>
-    <p class="w-25 m-auto mt-3">${fraseTicket} <br>
+    <h1 class="text-center m-auto">La tua tratta percorre ${dist}km</h1>
+    <p class=" mt-3">
+    Hai ${age} anni <br>
+    ${fraseTicket} <br>
     Il prezzo del tuo biglietto &egrave; di: €${prezzoFinale}
     </p>
     `;
@@ -49,5 +51,11 @@ const pickValues = function (){
 };
 
 
-const button = document.getElementById('pick-values').addEventListener('click', pickValues);
+const button = document.getElementById('pick-values');
+button.addEventListener('click', pickValues);
 
+function show(){
+    document.getElementById("ticket").classList.toggle('d-block');
+    document.getElementById("ins").classList.toggle('d-none');
+}
+button.addEventListener('click', show);
