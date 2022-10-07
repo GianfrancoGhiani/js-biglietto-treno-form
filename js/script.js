@@ -28,23 +28,22 @@ const pickValues = function (){
     }
     // console.log(dist, age);
 
-    let fraseTicket = '';
-    const prezzoPieno = parseFloat(dist) * 0.21
-    let prezzoFinale = (prezzoPieno).toFixed(2);
+    let ticketFrase = '';
+    const fullPrice = parseFloat(dist) * 0.21
+    let finalPrice = (fullPrice).toFixed(2);
     if (parseInt(age) < 18){
-        prezzoFinale = (prezzoPieno * 0.8).toFixed(2);
-        fraseTicket = 'Dato che sei minorenne, puoi accedere ad uno sconto del 20%. <br> Ti consigliamo di viaggiare con un adulto';
+        finalPrice = (fullPrice * 0.8).toFixed(2);
+        ticketFrase = 'Dato che sei minorenne, puoi accedere ad uno sconto del 20%. <br> Ti consigliamo di viaggiare con un adulto';
     } else if (parseInt(age) > 65){
-        prezzoFinale = (prezzoPieno * 0.6).toFixed(2);
-        fraseTicket = 'Dato che sei un over 65, puoi accedere ad uno sconto del 40%';
+        finalPrice = (fullPrice * 0.6).toFixed(2);
+        ticketFrase = 'Dato che sei un over 65, puoi accedere ad uno sconto del 40%';
     }
-    // console.log(prezzoFinale);
     document.getElementById("ticket").innerHTML =`
     <h1 class="text-center m-auto">La tua tratta percorre ${dist}km</h1>
     <p class=" mt-3">
     Hai ${age} anni <br>
-    ${fraseTicket} <br>
-    Il prezzo del tuo biglietto &egrave; di: €${prezzoFinale}
+    ${ticketFrase} <br>
+    Il prezzo del tuo biglietto &egrave; di: €${finalPrice}
     </p>
     `;
 
